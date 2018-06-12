@@ -15,6 +15,7 @@ body,html {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
+  
 }
 
 .key {
@@ -47,4 +48,34 @@ kbd {
   text-transform: uppercase;
   letter-spacing: .1rem;
   color: #ffc600;
+}
+
+.hint{
+  z-index: 1000;
+  position: relative;
+  bottom: 300px;
+  width: 80%;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 20px;
+  opacity: 0;
+  border: .4rem solid black;
+  border-radius: .5rem;
+  transition: all 0.9s ease;
+  background: rgba(0,0,0,0.4);
+}
+
+.hint h1{
+  display: block;
+}
+
+.sound-hint{
+  font-size: 15px;
+  margin-top: -10px;
+}
+
+.show-hint{
+  opacity: 1;
 }

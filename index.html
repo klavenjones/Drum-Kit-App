@@ -2,49 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JS Drum Kit</title>
+  <title>Drumkit Application</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 
   <div class="keys">
-    <div data-key="65" class="key">
+    <div data-key="65" class="key" onmouseover="showHint(this)" onmouseout="removeHint(this)" >
       <kbd>A</kbd>
       <span class="sound">clap</span>
     </div>
-    <div data-key="83" class="key">
+    <div data-key="83" class="key" onmouseover="showHint(this)" onmouseout="removeHint(this)">
       <kbd>S</kbd>
       <span class="sound">hihat</span>
     </div>
-    <div data-key="68" class="key">
+    <div data-key="68" class="key" onmouseover="showHint(this)" onmouseout="removeHint(this)">
       <kbd>D</kbd>
       <span class="sound">kick</span>
     </div>
-    <div data-key="70" class="key">
+    <div data-key="70" class="key" onmouseover="showHint(this)" onmouseout="removeHint(this)">
       <kbd>F</kbd>
       <span class="sound">openhat</span>
     </div>
-    <div data-key="71" class="key">
+    <div data-key="71" class="key" onmouseover="showHint(this)" onmouseout="removeHint(this)">
       <kbd>G</kbd>
       <span class="sound">boom</span>
     </div>
-    <div data-key="72" class="key">
+    <div data-key="72" class="key" onmouseover="showHint(this)" onmouseout="removeHint(this)">
       <kbd>H</kbd>
       <span class="sound">ride</span>
     </div>
-    <div data-key="74" class="key">
+    <div data-key="74" class="key" onmouseover="showHint(this)" onmouseout="removeHint(this)">
       <kbd>J</kbd>
       <span class="sound">snare</span>
     </div>
-    <div data-key="75" class="key">
+    <div data-key="75" class="key" onmouseover="showHint(this)" onmouseout="removeHint(this)">
       <kbd>K</kbd>
       <span class="sound">tom</span>
     </div>
-    <div data-key="76" class="key">
+    <div data-key="76" class="key" onmouseover="showHint(this)" onmouseout="removeHint(this)">
       <kbd>L</kbd>
       <span class="sound">tink</span>
     </div>
+  </div>
+
+  <div id="hint" class="hint">
+      <h1>PRESS THE KEYBOARD</h1>
+      <span class="sound sound-hint">To make some noise!</span>
+      
   </div>
 
   <audio data-key="65" src="sounds/clap.wav"></audio>
@@ -69,27 +75,42 @@
             const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
            
             if(!audio || !key) return;   //This will stop the function if there is no corresponding button and audio is null.
-           
+            
             audio.currentTime = 0;  //This will reset the sound to zero. This will allow you to play sound repeatedly without waiting for the event to finish
            
             audio.play();  //Play the corresponding sound. 
            
             //Animation 
             key.classList.add('playing');    // adds the class it is equivalant to .addClass method in JQuery
+          
       }
 
       function removeTransition(e){
           if(e.propertyName !== "transform") return; 
           this.classList.remove('playing');
+          console.log(e);
       }
+
+
+      function showHint(x){
+        hint.classList.add('show-hint');
+        console.log(hint);
+      }
+      
+      function removeHint(x){
+        hint.classList.remove('show-hint');
+        console.log(x)
+      }
+
+    
 
      //Listen for a keyup event 
      window.addEventListener('keydown', playSound); 
+     const hint = document.getElementById('hint');
      const keys = document.querySelectorAll('.key'); // selects all
      keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-
+ 
 </script>
-
 
 </body>
 </html>
