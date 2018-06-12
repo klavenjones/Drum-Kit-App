@@ -64,13 +64,18 @@
            
            //Look for the element with the matching keycode of the event keycode
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+           
             // Look for key elements to animate
             const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-            if(!audio || !key) return; // This will stop the function if there is no corresponding button and audio is null.
-            audio.currentTime = 0; //This will reset the sound to zero. This will allow you to play sound repeatedly without waiting for the event to finish
-            audio.play(); //Play the corresponding sound. 
+           
+            if(!audio || !key) return;   //This will stop the function if there is no corresponding button and audio is null.
+           
+            audio.currentTime = 0;  //This will reset the sound to zero. This will allow you to play sound repeatedly without waiting for the event to finish
+           
+            audio.play();  //Play the corresponding sound. 
+           
             //Animation 
-            key.classList.add('playing'); // adds the class it is equivalant to .addClass method in JQuery
+            key.classList.add('playing');    // adds the class it is equivalant to .addClass method in JQuery
       }
 
       function removeTransition(e){
